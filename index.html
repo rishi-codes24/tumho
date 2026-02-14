@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>From Rishh To Prisha ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    text-align: center;
+    color: white;
+}
+
+/* Glitter Sparkles */
+.sparkle {
+    position: absolute;
+    color: white;
+    animation: sparkle 2s linear infinite;
+}
+
+@keyframes sparkle {
+    0% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.5); }
+}
+
+/* Floating */
+.floating {
+    position: absolute;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { bottom: -10px; opacity: 1; }
+    100% { bottom: 100%; opacity: 0; }
+}
+
+h1 {
+    margin-top: 60px;
+    font-size: 50px;
+}
+
+p {
+    font-size: 20px;
+    width: 75%;
+    margin: auto;
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 15px;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background: white;
+    color: #ff4d6d;
+}
+
+#noBtn {
+    background: #ff4d6d;
+    color: white;
+    position: absolute;
+}
+
+.cute-img {
+    width: 170px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+#typing {
+    font-size: 26px;
+    margin-top: 15px;
+    height: 40px;
+}
+
+.ring {
+    font-size: 80px;
+    animation: pop 1s ease forwards;
+}
+
+@keyframes pop {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Prisha 🌸❤️</h1>
+
+<p>
+Just like Rockstar… love is intense and unforgettable.  
+When I hear “Tum Ho”… I think of you.
+</p>
+
+<div id="typing"></div>
+
+<img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" class="cute-img">
+<img src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" class="cute-img">
+
+<p>Will you be mine forever, Prisha? 💍✨</p>
+
+<button id="yesBtn" onclick="yesClicked()">Yes 💘</button>
+<button id="noBtn" onmouseover="moveNo()">No 😢</button>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9d0e6e15a7.mp3?filename=romantic-piano-110507.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+let musicStarted = false;
+let noCount = 0;
+const music = document.getElementById("bgMusic");
+music.volume = 0.4;
+
+// Start music on first click
+document.body.addEventListener("click", function() {
+    if (!musicStarted) {
+        music.play();
+        musicStarted = true;
+    }
+});
+
+// Typing effect
+let text = "Tum Ho… Bas Tum Ho. 💖";
+let i = 0;
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+    }
+}
+typeWriter();
+
+// YES click
+function yesClicked() {
+    music.pause();
+    document.body.innerHTML = `
+        <h1>She Said YES 💍❤️</h1>
+        <div class="ring">💍</div>
+        <p>Prisha, you are my Rockstar.</p>
+        <h2>Forever Yours,<br>Rishh</h2>
+    `;
+}
+
+// NO button runs
+function moveNo() {
+    let button = document.getElementById("noBtn");
+    let yesBtn = document.getElementById("yesBtn");
+
+    noCount++;
+
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 50);
+
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+
+    yesBtn.style.transform = "scale(" + (1 + noCount * 0.1) + ")";
+}
+
+// Floating hearts & flowers
+setInterval(function() {
+    let floatItem = document.createElement("div");
+    floatItem.className = "floating";
+
+    const items = ["❤️", "🌸", "🌷", "💖"];
+    floatItem.innerHTML = items[Math.floor(Math.random() * items.length)];
+
+    floatItem.style.left = Math.random() * 100 + "vw";
+    floatItem.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+    document.body.appendChild(floatItem);
+
+    setTimeout(() => floatItem.remove(), 5000);
+}, 400);
+
+// Sparkle effect
+setInterval(function() {
+    let sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.innerHTML = "✨";
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.top = Math.random() * 100 + "vh";
+    sparkle.style.fontSize = (Math.random() * 10 + 10) + "px";
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => sparkle.remove(), 2000);
+}, 300);
+
+</script>
+
+</body>
+</html>
