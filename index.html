@@ -15,33 +15,9 @@ body {
     color: white;
 }
 
-/* Glitter Sparkles */
-.sparkle {
-    position: absolute;
-    color: white;
-    animation: sparkle 2s linear infinite;
-}
-
-@keyframes sparkle {
-    0% { opacity: 0; transform: scale(0.5); }
-    50% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0; transform: scale(0.5); }
-}
-
-/* Floating */
-.floating {
-    position: absolute;
-    animation: floatUp 5s linear infinite;
-}
-
-@keyframes floatUp {
-    0% { bottom: -10px; opacity: 1; }
-    100% { bottom: 100%; opacity: 0; }
-}
-
 h1 {
     margin-top: 60px;
-    font-size: 50px;
+    font-size: 48px;
 }
 
 p {
@@ -73,26 +49,15 @@ button {
     position: absolute;
 }
 
-.cute-img {
-    width: 170px;
-    border-radius: 20px;
-    margin: 10px;
+/* Floating hearts & flowers */
+.floating {
+    position: absolute;
+    animation: floatUp 5s linear infinite;
 }
 
-#typing {
-    font-size: 26px;
-    margin-top: 15px;
-    height: 40px;
-}
-
-.ring {
-    font-size: 80px;
-    animation: pop 1s ease forwards;
-}
-
-@keyframes pop {
-    0% { transform: scale(0); }
-    100% { transform: scale(1); }
+@keyframes floatUp {
+    0% { bottom: -10px; opacity: 1; }
+    100% { bottom: 100%; opacity: 0; }
 }
 
 </style>
@@ -104,19 +69,16 @@ button {
 
 <p>
 Just like Rockstar… love is intense and unforgettable.  
-When I hear “Tum Ho”… I think of you.
+When I hear “Tum Ho”… I think of you.  
+You are my favorite feeling in this world.
 </p>
-
-<div id="typing"></div>
-
-<img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" class="cute-img">
-<img src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" class="cute-img">
 
 <p>Will you be mine forever, Prisha? 💍✨</p>
 
 <button id="yesBtn" onclick="yesClicked()">Yes 💘</button>
 <button id="noBtn" onmouseover="moveNo()">No 😢</button>
 
+<!-- Soft background instrumental -->
 <audio id="bgMusic" loop>
   <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9d0e6e15a7.mp3?filename=romantic-piano-110507.mp3" type="audio/mpeg">
 </audio>
@@ -128,7 +90,7 @@ let noCount = 0;
 const music = document.getElementById("bgMusic");
 music.volume = 0.4;
 
-// Start music on first click
+// Start music on first click (mobile safe)
 document.body.addEventListener("click", function() {
     if (!musicStarted) {
         music.play();
@@ -136,43 +98,28 @@ document.body.addEventListener("click", function() {
     }
 });
 
-// Typing effect
-let text = "Tum Ho… Bas Tum Ho. 💖";
-let i = 0;
-function typeWriter() {
-    if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 100);
-    }
-}
-typeWriter();
-
-// YES click
+// YES button
 function yesClicked() {
 
-    if (typeof music !== "undefined") {
-        music.pause();
-    }
+    music.pause();
 
     document.body.innerHTML = `
-        <div style="text-align:center; padding-top:50px; color:white; font-family:Georgia, serif;">
+        <div style="text-align:center; padding-top:60px;">
             <h1 style="font-size:45px;">She Said YES 💍❤️</h1>
             <div style="font-size:80px;">💍</div>
             <p style="font-size:22px;">Tum Ho… Bas Tum Ho. 💖</p>
             <h2>Forever Yours,<br>Rishh</h2>
+            <p style="margin-top:20px;">Playing our song...</p>
         </div>
     `;
 
+    // After 2 seconds, open your exact Shorts link
     setTimeout(function() {
         window.location.href = "https://youtube.com/shorts/TtSeo3jkZzw";
     }, 2000);
 }
 
-
-
-
-// NO button runs
+// NO button runs away
 function moveNo() {
     let button = document.getElementById("noBtn");
     let yesBtn = document.getElementById("yesBtn");
@@ -203,19 +150,6 @@ setInterval(function() {
 
     setTimeout(() => floatItem.remove(), 5000);
 }, 400);
-
-// Sparkle effect
-setInterval(function() {
-    let sparkle = document.createElement("div");
-    sparkle.className = "sparkle";
-    sparkle.innerHTML = "✨";
-    sparkle.style.left = Math.random() * 100 + "vw";
-    sparkle.style.top = Math.random() * 100 + "vh";
-    sparkle.style.fontSize = (Math.random() * 10 + 10) + "px";
-    document.body.appendChild(sparkle);
-
-    setTimeout(() => sparkle.remove(), 2000);
-}, 300);
 
 </script>
 
