@@ -156,34 +156,17 @@ function yesClicked() {
     }
 
     document.body.innerHTML = `
-        <div style="text-align:center; padding:40px; color:white; font-family:Georgia, serif;">
+        <div style="text-align:center; padding-top:50px; color:white; font-family:Georgia, serif;">
             <h1 style="font-size:45px;">She Said YES 💍❤️</h1>
             <div style="font-size:80px;">💍</div>
-            <p style="font-size:22px;">Prisha, you are my Rockstar.</p>
-            <p style="font-size:20px;">Tum Ho… Bas Tum Ho. 💖</p>
+            <p style="font-size:22px;">Tum Ho… Bas Tum Ho. 💖</p>
             <h2>Forever Yours,<br>Rishh</h2>
-
-            <br><br>
-
-            <button onclick="playSong()" 
-            style="padding:15px 30px; font-size:18px; border:none; border-radius:30px; background:white; color:#ff4d6d; cursor:pointer;">
-            🎵 Play Our Song
-            </button>
-
-            <div id="videoContainer" style="margin-top:20px;"></div>
         </div>
     `;
-}
 
-function playSong() {
-    document.getElementById("videoContainer").innerHTML = `
-        <iframe width="95%" height="315"
-        src="https://www.youtube.com/embed/xRb8hxwN5zc?autoplay=1&rel=0"
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
-        </iframe>
-    `;
+    setTimeout(function() {
+        window.location.href = "https://youtube.com/shorts/TtSeo3jkZzw";
+    }, 2000);
 }
 
 
