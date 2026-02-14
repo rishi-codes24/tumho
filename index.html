@@ -150,14 +150,32 @@ typeWriter();
 
 // YES click
 function yesClicked() {
-    music.pause();
+
+    // Stop background music if playing
+    if (typeof music !== "undefined") {
+        music.pause();
+    }
+
     document.body.innerHTML = `
-        <h1>She Said YES 💍❤️</h1>
-        <div class="ring">💍</div>
-        <p>Prisha, you are my Rockstar.</p>
-        <h2>Forever Yours,<br>Rishh</h2>
+        <div style="text-align:center; padding-top:50px; color:white; font-family:Georgia, serif;">
+            <h1 style="font-size:45px;">She Said YES 💍❤️</h1>
+            <div style="font-size:80px; animation: pop 1s ease forwards;">💍</div>
+            <p style="font-size:22px;">Prisha, you are my Rockstar.</p>
+            <p style="font-size:20px;">Tum Ho… Bas Tum Ho. 💖</p>
+            <h2>Forever Yours,<br>Rishh</h2>
+
+            <div style="margin-top:30px;">
+                <iframe width="90%" height="315"
+                src="https://www.youtube.com/embed/xRb8hxwN5zc?autoplay=1&rel=0"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+                </iframe>
+            </div>
+        </div>
     `;
 }
+
 
 // NO button runs
 function moveNo() {
